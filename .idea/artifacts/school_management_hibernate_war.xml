@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="school_management_hibernate:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>school_management_hibernate</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="smis##0.1.war">
+      <element id="artifact" artifact-name="school_management_hibernate:war exploded" />
+    </root>
+  </artifact>
+</component>
