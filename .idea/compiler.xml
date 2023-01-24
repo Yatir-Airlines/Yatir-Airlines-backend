@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="school_management_hibernate" />
+        <module name="smis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="school_management_hibernate" target="1.8" />
+      <module name="smis" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

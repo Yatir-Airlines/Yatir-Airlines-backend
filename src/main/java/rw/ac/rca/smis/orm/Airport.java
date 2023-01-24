@@ -1,10 +1,14 @@
 package rw.ac.rca.smis.orm;
 
 import java.util.Set;
+import javax.persistence.*;
 
+@Entity
+@Table(name="airport")
 public class Airport {
-    private String Name;
+    private String  Name;
     private int code;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "airport")
     private Set<Flight> flights;
 
 

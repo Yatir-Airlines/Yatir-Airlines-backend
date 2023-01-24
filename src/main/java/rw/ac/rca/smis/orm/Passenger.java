@@ -1,5 +1,10 @@
 package rw.ac.rca.smis.orm;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "passenger")
 public class Passenger {
     private String name;
     private String email;
