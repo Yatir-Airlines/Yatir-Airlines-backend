@@ -20,6 +20,7 @@ public class FlightImpl implements Flight {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction() ;
 
+
     }
 
     @Override
