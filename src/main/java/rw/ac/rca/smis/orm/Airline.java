@@ -1,9 +1,21 @@
 package rw.ac.rca.smis.orm;
 
-import java.util.Set;
+import jdk.jfr.Unsigned;
 
+import javax.persistence.*;
+import java.util.Set;
+@Entity
+@Table(name="airline")
 public class Airline {
+    public int getId() {
+        return id;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String Name;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "airline")
     private Set<Flight> flights;
 
     public String getName() {

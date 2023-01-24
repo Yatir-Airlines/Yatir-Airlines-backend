@@ -1,10 +1,26 @@
 package rw.ac.rca.smis.orm;
 
+import javax.persistence.*;
 import java.util.Date;
 
+
+@Entity
+@Table(name = "booking")
 public class   Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "passenger_id")
     private Passenger passenger;
     private Date BookingDate;
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
     private Flight flight;
     public Flight getFlight() {
         return flight;
