@@ -1,10 +1,19 @@
 package rw.ac.rca.smis.orm;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Date;
 
+
+@Entity
+@Table(name = "booking")
 public class   Booking {
     private Passenger passenger;
     private Date BookingDate;
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
     private Flight flight;
     public Flight getFlight() {
         return flight;

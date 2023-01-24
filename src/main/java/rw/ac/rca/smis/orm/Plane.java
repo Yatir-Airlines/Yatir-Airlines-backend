@@ -1,6 +1,10 @@
 package rw.ac.rca.smis.orm;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="plane")
 public class Plane {
     private String make;
     private String model;
