@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Entity
 @Table(name="airport")
 public class Airport {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
+
     private String  Name;
     private int code;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "airport")
