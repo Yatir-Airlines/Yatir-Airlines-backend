@@ -8,5 +8,14 @@ public interface Flight {
     Set<Flight> getFlights();
     Flight deleteFlight(Flight flight);
     Flight updateFlight(Flight flight);
+<<<<<<< HEAD
     Flight createFlight(Flight flight);
+=======
+<<<<<<< HEAD
+=======
+    Flight createFlight(Flight flight);
+
+>>>>>>> c442863 (some modification)
+
+>>>>>>> 8a24e39 (working on request)
 }

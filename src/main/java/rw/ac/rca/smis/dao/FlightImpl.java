@@ -28,19 +28,33 @@ public class FlightImpl implements Flight {
         return null;
     }
 
+<<<<<<< HEAD
     @Override
     public Flight deleteFlight(Flight flight) {
         return null;
     }
+=======
+<<<<<<< HEAD
+>>>>>>> 8a24e39 (working on request)
 
     @Override
     public Flight updateFlight(Flight flight) {
         return null;
     }
 
+<<<<<<< HEAD
     @Override
     public Flight createFlight(Flight flight) {
         return null;
     }
+=======
+=======
+    @Override
+    public Flight createFlight(Flight flight) {
+        return null;
+        
+    }
+>>>>>>> c442863 (some modification)
+>>>>>>> 8a24e39 (working on request)
 }
 
