@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Starter{
   public static void main(String args[]) {
-      Flight flight = new Flight(new Date("10/10/2022"),new Date("12/04/2023"));
+      Flight flight = new Flight(001, "Kigali", "Doha", "12:00", "6:00", 60);
 
       Configuration configuration = new Configuration();
       configuration.configure("hibernate.cfg.xml");
