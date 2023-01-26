@@ -2,13 +2,14 @@ package rw.ac.rca.smis.orm;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
 @Table(name = "flight")
 
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
+    private int id;
     private int flightNumber;
     private Date departure;
     private Date arrival;
