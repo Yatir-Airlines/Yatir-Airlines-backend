@@ -11,6 +11,7 @@ import java.util.Objects;
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private int flightNumber;
     private String departureCity;
     private String arrivalCity;

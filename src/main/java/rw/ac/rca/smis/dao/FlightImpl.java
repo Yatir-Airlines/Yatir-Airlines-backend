@@ -1,8 +1,6 @@
 package rw.ac.rca.smis.dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,8 +10,33 @@ import java.util.Set;
 
 public class FlightImpl implements Flight {
     private SessionFactory sessionFactory;
+    private Serializable id;
+    private Flight flight1;
+
     public FlightImpl(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
+    }
+
+    @Override public Flight createFlight(Flight flight) {
+        Session session=sessionFactory.openSession();
+        Transaction transaction= null;
+        try {
+        transaction= session.beginTransaction();
+        session.save(flight);
+        transaction.commit();
+
+        }
+        catch (HibernateException e){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+
+        }
+        finally {
+            session.close();
+        }
+        return flight;
     }
 
     @Override
@@ -24,6 +47,8 @@ public class FlightImpl implements Flight {
         transaction.commit();
         session.close();
         return new HashSet<>(flights);
+
+
     }
 
     @Override
@@ -35,6 +60,7 @@ public class FlightImpl implements Flight {
         session.close();
         return f;
     }
+
 
     @Override
     public Flight deleteFlight(Flight flight) {
@@ -55,14 +81,5 @@ public class FlightImpl implements Flight {
         session.close();
         return flight;
     }
-
-    @Override
-    public Flight createFlight(Flight flight) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(flight);
-        transaction.commit();
-        session.close();
-        return flight;
-    }
 }
+
