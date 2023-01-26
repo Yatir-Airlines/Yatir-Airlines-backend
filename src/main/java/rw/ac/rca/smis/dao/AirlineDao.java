@@ -4,6 +4,7 @@ import rw.ac.rca.smis.orm.Airline;
 import java.util.Set;
 
 public interface AirlineDao {
+  public getAirline(int airlineId);
 
 public Airline getAirline(int airlineId);
 public Set<Airline> getAirLines();
