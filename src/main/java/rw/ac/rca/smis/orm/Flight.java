@@ -1,25 +1,35 @@
 package rw.ac.rca.smis.orm;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
+
 @Entity
 @Table(name = "flight")
 
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
+    private int id;
     private int flightNumber;
-    private Date departure;
-    private Date arrival;
+    private String departureCity;
+    private String arrivalCity;
+    private String departureTime;
+    private String arrivalTime;
+    private int numberOfSeats;
+    private int numberOfBookedSeats;
+    private static ArrayList<Flight> flights = new ArrayList<Flight>();
 
-    public Flight(Date departure, Date arrival) {
-        this.departure = departure;
-        this.arrival = arrival;
-    }
-
-    public Flight() {
-
+    public Flight(int flightNumber, String departureCity, String arrivalCity, String departureTime, String arrivalTime, int numberOfSeats) {
+        this.flightNumber = flightNumber;
+        this.departureCity = departureCity;
+        this.arrivalCity = arrivalCity;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.numberOfSeats = numberOfSeats;
+        this.numberOfBookedSeats = 0;
+        flights.add(this);
     }
 
     public int getFlightNumber() {
@@ -30,19 +40,51 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public Date getDeparture() {
-        return departure;
+    public String getDepartureCity() {
+        return departureCity;
     }
 
-    public void setDeparture(Date departure) {
-        this.departure = departure;
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
     }
 
-    public Date getArrival() {
-        return arrival;
+    public String getArrivalCity() {
+        return arrivalCity;
     }
 
-    public void setArrival(Date arrival) {
-        this.arrival = arrival;
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public String getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public int getNumberOfBookedSeats() {
+        return numberOfBookedSeats;
+    }
+
+    public void setNumberOfBookedSeats(int numberOfBookedSeats) {
+        this.numberOfBookedSeats = numberOfBookedSeats;
     }
 }

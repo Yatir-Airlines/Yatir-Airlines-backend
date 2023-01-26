@@ -5,16 +5,14 @@
         <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/YATIR_AIRLINES</property>
-        <property name="hibernate.connection.username">superuser</property>
-        <property name="hibernate.connection.password">divine</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/yatir_airlines</property>
+        <property name="hibernate.connection.username">VANESSA</property>
+        <property name="hibernate.connection.password">password</property>
 
         <property name="hibernate.session_factory_name">SmisSessionFactory</property>
         <property name="hibernate.connection.pool_size">1</property>
-        <property name="cache.provider_class">org.hibernate</property>
-        <property name="cache.provider_class">.cache.NoCacheProvider</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.default_schema">YATIR_AIRLINES</property>
+        <property name="hibernate.default_schema">yatir_airlines</property>
         <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
