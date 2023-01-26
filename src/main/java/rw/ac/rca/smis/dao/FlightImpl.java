@@ -108,7 +108,7 @@ public class FlightImpl implements Flight {
         finally {
             session.close();
         }
-        return null;
+        return flight;
     }
 
 
