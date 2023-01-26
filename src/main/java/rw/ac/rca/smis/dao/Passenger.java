@@ -1,13 +1,14 @@
 package rw.ac.rca.smis.dao;
 
+import java.util.List;
 import java.util.Set;
 
 public interface Passenger {
-    public rw.ac.rca.smis.orm.Passenger getPassenger(int passengerId);
-    public Set<Passenger> getPassengers();
-    public rw.ac.rca.smis.orm.Passenger updatePassword(int passengerId);
-    public rw.ac.rca.smis.orm.Passenger deletePassenger(int passengerId);
-    public rw.ac.rca.smis.orm.Passenger createPassenger(rw.ac.rca.smis.orm.Passenger passenger);
+    public Passenger getPassenger(int passengerId);
+    public List<Passenger> getPassengers();
+    public Passenger updatePassenger(Passenger passenger);
+    public Passenger deletePassenger(int passengerId);
+    public Passenger createPassenger(Passenger passenger);
 
 
 }

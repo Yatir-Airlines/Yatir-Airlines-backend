@@ -79,7 +79,6 @@ public class FlightImpl implements Flight {
         session.update(flight);
         transaction.commit();
         session.close();
-        return flight;
-    }
+
 }
 
