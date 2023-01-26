@@ -19,10 +19,13 @@ public class AirlineImpl implements AirlineDao{
         HashSet<Airline> airlines;
         try {
             airlines= new HashSet<Airline>(session.createCriteria(Airline.class).list());
+            return airlines;
         } catch (HibernateException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            return new HashSet<>();
+        } finally {
+            session.close();
         }
-        return airlines;
     }
 
     @Override
