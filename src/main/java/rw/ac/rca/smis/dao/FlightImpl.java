@@ -32,7 +32,7 @@ public class FlightImpl implements Flight {
             }
             e.printStackTrace();
 
-        }
+        }  
         finally {
             session.close();
         }
@@ -47,6 +47,7 @@ public class FlightImpl implements Flight {
         transaction.commit();
         session.close();
         return new HashSet<>(flights);
+
 
 
     }
@@ -79,6 +80,7 @@ public class FlightImpl implements Flight {
         session.update(flight);
         transaction.commit();
         session.close();
+        return flight;
 
 }
 

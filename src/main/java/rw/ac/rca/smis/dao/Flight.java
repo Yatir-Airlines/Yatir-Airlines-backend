@@ -9,5 +9,4 @@ public interface Flight {
     Flight getFlight(Flight flight, Serializable id);
     Flight deleteFlight(Flight flight);
     Flight updateFlight(Flight flight);
-
 }

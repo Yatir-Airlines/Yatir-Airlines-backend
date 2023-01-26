@@ -1,5 +1,6 @@
 package rw.ac.rca.smis.dao;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -64,6 +65,7 @@ public class PassengerImpl implements Passenger{
         transaction.commit();
         session.close();
         return passenger;
+
 
     }
 }
