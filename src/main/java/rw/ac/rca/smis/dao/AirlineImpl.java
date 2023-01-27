@@ -37,7 +37,6 @@ public class AirlineImpl implements AirlineDao{
         session.close();
     }
 
-    @Override
     public Airline getAirline(int airlineId){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
