@@ -1,7 +1,7 @@
 package rw.ac.rca.smis.dao;
 
 
-import java.util.Set;
+import java.util.List;
 
 public interface Plane {
     public  Plane getPlane(int planeId);

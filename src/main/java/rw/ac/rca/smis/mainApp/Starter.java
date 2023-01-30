@@ -8,16 +8,17 @@ import org.hibernate.cfg.Configuration;
 import rw.ac.rca.smis.orm.Flight;
 
 
-import java.util.Date;
+//import java.util.Date;
 
 public class Starter{
-  public static void main(String args[]) {
-      Flight flight = new Flight(001, "Kigali", "Doha", "12:00", "6:00", 60);
+  public static void main(String[] args) {
+      Flight flight = new Flight(21, "Kigali", "Doha", "12:00", "6:00", 60);
 
       Configuration configuration = new Configuration();
       configuration.configure("hibernate.cfg.xml");
 
       try {
+          @SuppressWarnings("deprecation")
          SessionFactory factory = configuration.buildSessionFactory();
           Session session = factory.openSession();
 

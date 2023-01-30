@@ -3,17 +3,19 @@ package rw.ac.rca.smis.dao;
 
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import rw.ac.rca.smis.util.HibernateUtil;
 
 public class BookingImpl implements Booking{
 
+SessionFactory sessionFactory;
+public BookingImpl(SessionFactory session){
+  this.sessionFactory = session;
+}
     @Override
     public Booking addBooking(Booking booking) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(booking);
-        session.getTransaction().commit();
-        session.close();
+      Session session ;
+
         return booking;
     }
 
