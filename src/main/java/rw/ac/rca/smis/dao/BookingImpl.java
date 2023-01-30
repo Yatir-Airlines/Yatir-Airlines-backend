@@ -6,26 +6,29 @@ import org.hibernate.Session;
 import rw.ac.rca.smis.util.HibernateUtil;
 
 public class BookingImpl implements Booking{
-
+    SessionFactory sessionFactory;
+public BookingImpl(SessionFactory session){
+    this.sessionFactory = session;
+}
     @Override
     public Booking addBooking(Booking booking) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         session.save(booking);
-        session.getTransaction().commit();
+        transaction.commit();
         session.close();
         return booking;
     }
 
     @Override
     public Booking removeBooking(Boolean option,int bookingId) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        Session session =sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         Booking booking = (Booking) session.get(Booking.class,bookingId);
         session.delete(booking);
-        session.getTransaction().commit();
+        transaction.commit();
         session.close();
-        return null;
+        return booking;
 }
 
   
@@ -33,27 +36,27 @@ public class BookingImpl implements Booking{
     @Override
 
     public Booking upDateBooking(Booking booking,int bookingId) {
-        Sesssion session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Booking booking = (Booking) session.get(Booking.class,bookingId);
-        session.put(booking);
-        session.getTransaction().commit();
+        Sesssion session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Booking bookings = (Booking) session.get(Booking.class,bookingId);
+        session.put(bookings);
+        transaction.commit();
         session.close();
 
-        return null;
+        return bookings;
     }
 
     @Override
     public Booking GetBooking(int bookingId) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        Session session =sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         Booking booking = (Booking) session.get(Booking.class,bookingId);
-        session.getTransaction().commit();
+        transaction.commit();
         session.close();
-        return null;
+        return booking;
   
-        return null;
+
     }
 }
 
