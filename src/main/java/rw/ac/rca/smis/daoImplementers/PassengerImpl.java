@@ -1,15 +1,16 @@
-package rw.ac.rca.smis.dao;
+package rw.ac.rca.smis.daoImplementers;
 
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import rw.ac.rca.smis.dao.Passenger;
 
 import java.util.List;
 import java.util.Set;
 
-public class PassengerImpl implements Passenger{
+public class PassengerImpl implements Passenger {
     private final SessionFactory sessionFactory;
     public PassengerImpl(SessionFactory session){
         this.sessionFactory = session;

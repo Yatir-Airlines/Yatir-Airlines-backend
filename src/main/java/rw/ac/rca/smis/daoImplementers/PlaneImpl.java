@@ -1,10 +1,11 @@
-package rw.ac.rca.smis.dao;
+package rw.ac.rca.smis.daoImplementers;
 
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import rw.ac.rca.smis.dao.Plane;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class PlaneImpl implements Plane{
+public class PlaneImpl implements Plane {
     private final SessionFactory sessionFactory;
     public PlaneImpl(SessionFactory session){
 this.sessionFactory = session;

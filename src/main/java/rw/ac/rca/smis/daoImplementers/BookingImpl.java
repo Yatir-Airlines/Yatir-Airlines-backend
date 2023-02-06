@@ -1,11 +1,15 @@
-package rw.ac.rca.smis.dao;
+package rw.ac.rca.smis.daoImplementers;
 
 
 
 import org.hibernate.Session;
-import rw.ac.rca.smis.util.HibernateUtil;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import rw.ac.rca.smis.dao.Booking;
 
-public class BookingImpl implements Booking{
+
+public class BookingImpl implements Booking
+{
     SessionFactory sessionFactory;
 public BookingImpl(SessionFactory session){
     this.sessionFactory = session;
@@ -21,29 +25,25 @@ public BookingImpl(SessionFactory session){
     }
 
     @Override
-    public Booking removeBooking(Boolean option,int bookingId) {
+    public Booking removeBooking(int bookingId) {
         Session session =sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Booking booking = (Booking) session.get(Booking.class,bookingId);
         session.delete(booking);
         transaction.commit();
         session.close();
-        return booking;
-}
-
-  
+        return null;
+    }
 
     @Override
-
     public Booking upDateBooking(Booking booking,int bookingId) {
-        Sesssion session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Booking bookings = (Booking) session.get(Booking.class,bookingId);
-        session.put(bookings);
+        session.update(bookings);
         transaction.commit();
         session.close();
-
-        return bookings;
+        return null;
     }
 
     @Override
