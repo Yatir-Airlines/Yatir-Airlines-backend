@@ -5,12 +5,23 @@ import javax.persistence.*;
 @Entity
 @Table(name="plane")
 public class Plane {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String make;
     private String model;
     private int NumberOfSeats;
+    public Plane() {
+
+    }
+    public Plane(int id, String make, String model, int numberOfSeats) {
+        this.id = id;
+        this.make = make;
+        this.model = model;
+        NumberOfSeats = numberOfSeats;
+    }
 
     public String getMake() {
         return make;

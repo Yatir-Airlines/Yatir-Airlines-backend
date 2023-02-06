@@ -2,6 +2,7 @@ package rw.ac.rca.smis.orm;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,6 +13,17 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+
+    @ManyToOne
+    @JoinColumn(name="airline_id")
+
+    private Airline airline;
+    @ManyToOne
+    @JoinColumn(name = "airport_id")
+    private Airport airport;
+
+
     private int flightNumber;
     private String departureCity;
     private String arrivalCity;
@@ -20,6 +32,9 @@ public class Flight {
     private int numberOfSeats;
     private int numberOfBookedSeats;
     private static ArrayList<Flight> flights = new ArrayList<Flight>();
+    public Flight(){
+
+    }
 
     public Flight(int flightNumber, String departureCity, String arrivalCity, String departureTime, String arrivalTime, int numberOfSeats) {
         this.flightNumber = flightNumber;
@@ -32,6 +47,13 @@ public class Flight {
         flights.add(this);
     }
 
+    public Airport getAirport() {
+        return airport;
+    }
+
+    public void setAirport(Airport airport) {
+        this.airport = airport;
+    }
     public int getFlightNumber() {
         return flightNumber;
     }
@@ -58,6 +80,14 @@ public class Flight {
 
     public String getDepartureTime() {
         return departureTime;
+    }
+
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
     }
 
     public void setDepartureTime(String departureTime) {

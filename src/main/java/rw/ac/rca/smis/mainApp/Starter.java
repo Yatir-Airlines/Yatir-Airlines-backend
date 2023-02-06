@@ -11,8 +11,9 @@ import rw.ac.rca.smis.orm.Flight;
 //import java.util.Date;
 
 public class Starter{
-  public static void main(String[] args) {
-      Flight flight = new Flight(21, "Kigali", "Doha", "12:00", "6:00", 60);
+  public static void main(String args[]) {
+      Flight flight = new Flight(23, "Kamembe", "Gisenyi", "10:00", "8:00", 43);
+
 
       Configuration configuration = new Configuration();
       configuration.configure("hibernate.cfg.xml");
@@ -24,10 +25,9 @@ public class Starter{
 
           System.out.println("Begin transaction ......................");
           Transaction transaction = session.beginTransaction();
-           session.saveOrUpdate(flight);
+          session.saveOrUpdate(flight);
           System.out.println("Committing transaction .................");
           transaction.commit();
-
           session.close();
           factory.close();
 

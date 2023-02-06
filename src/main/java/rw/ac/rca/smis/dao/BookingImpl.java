@@ -1,61 +1,67 @@
 package rw.ac.rca.smis.dao;
 
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import rw.ac.rca.smis.util.HibernateUtil;
+import org.hibernate.Transaction;
 
-public class BookingImpl implements Booking{
 
-SessionFactory sessionFactory;
-public BookingImpl(SessionFactory session){
-  this.sessionFactory = session;
-}
-    @Override
-    public Booking addBooking(Booking booking) {
-      Session session ;
+public class BookingImpl implements BookingDao {
 
-        return booking;
+    public SessionFactory sessionFactory;
+
+    public BookingImpl(SessionFactory session) {
+        this.sessionFactory = session;
     }
 
+        @Override
+        public BookingDao addBooking (BookingDao booking){
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            session.save(booking);
+            transaction.commit();
+            session.close();
+            return booking;
+        }
+
+        @Override
+        public BookingDao removeBooking (Boolean option, int bookingId){
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            BookingDao booking = (BookingDao) session.get(BookingDao.class, bookingId);
+            session.delete(booking);
+            transaction.commit();
+            session.close();
+            return booking;
+        }
+
     @Override
-    public Booking removeBooking(Boolean option,int bookingId) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Booking booking = (Booking) session.get(Booking.class,bookingId);
-        session.delete(booking);
-        session.getTransaction().commit();
-        session.close();
-        return null;
-}
+    public BookingDao upDateBooking(BookingDao booking, int bookingId) {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            BookingDao bookings = (BookingDao) session.get(BookingDao.class, bookingId);
+            session.update(bookings);
+            transaction.commit();
+            session.close();
 
-  
+            return bookings;
 
-    @Override
-
-    public Booking upDateBooking(Booking booking,int bookingId) {
-        Sesssion session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Booking booking = (Booking) session.get(Booking.class,bookingId);
-        session.put(booking);
-        session.getTransaction().commit();
-        session.close();
-
-        return null;
     }
 
-    @Override
-    public Booking GetBooking(int bookingId) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Booking booking = (Booking) session.get(Booking.class,bookingId);
-        session.getTransaction().commit();
-        session.close();
-        return null;
-  
-        return null;
+
+
+        @Override
+        public BookingDao GetBooking (int bookingId){
+
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            BookingDao booking = (BookingDao) session.get(BookingDao.class, bookingId);
+            transaction.commit();
+            session.close();
+            return booking;
+
+
+        }
     }
-}
 

@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "passenger")
 public class Passenger {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -31,6 +33,8 @@ public class Passenger {
         this.email = email;
         this.registrationNumber = registrationNumber;
         this.phoneNumber = phoneNumber;
+    }
+    public Passenger() {
     }
 
     public String getName() {

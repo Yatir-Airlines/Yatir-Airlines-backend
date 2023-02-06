@@ -1,7 +1,8 @@
 package rw.ac.rca.smis.orm;
 
 import org.hibernate.Session;
-import rw.ac.rca.smis.util.HibernateUtil;
+
+
 
 import javax.persistence.*;
 import java.util.Date;
