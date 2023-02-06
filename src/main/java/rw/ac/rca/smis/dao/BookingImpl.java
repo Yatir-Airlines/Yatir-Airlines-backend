@@ -18,6 +18,21 @@ public class BookingImpl implements Booking{
     }
 
     @Override
+    public Booking removeBooking(Boolean option) {
+        return null;
+    }
+
+    @Override
+    public Booking removeBooking(int bookingId) {
+        return null;
+    }
+
+    @Override
+    public Booking upDateBooking(Booking booking) {
+        return null;
+    }
+
+    @Override
     public Booking removeBooking(Boolean option,int bookingId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -51,8 +66,6 @@ public class BookingImpl implements Booking{
         Booking booking = (Booking) session.get(Booking.class,bookingId);
         session.getTransaction().commit();
         session.close();
-        return null;
-  
         return null;
     }
 }

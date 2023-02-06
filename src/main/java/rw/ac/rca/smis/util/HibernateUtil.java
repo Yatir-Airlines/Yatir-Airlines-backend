@@ -1,6 +1,7 @@
 package rw.ac.rca.smis.util;
 
 import org.hibernate.HibernateException;
+import org.hibernate.SessionBuilder;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -15,5 +16,8 @@ public class HibernateUtil {
             e.printStackTrace();
             throw new ExceptionInInitializerError(e);
         }
+    }
+
+    public static SessionBuilder getSessionFactory() {
     }
 }

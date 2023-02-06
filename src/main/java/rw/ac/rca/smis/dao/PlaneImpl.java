@@ -6,11 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class PlaneImpl implements Plane{
     private final SessionFactory sessionFactory;

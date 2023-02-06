@@ -9,7 +9,6 @@ public class AirlineImpl implements  AirlineDao{
     public Airline getAirline(int airlineId) {
         return null;
     }
-
     @Override
     public Set<Airline> getAirLines() {
         return null;
