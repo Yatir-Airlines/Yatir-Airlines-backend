@@ -1,10 +1,12 @@
 package rw.ac.rca.smis.dao;
+import java.util.List;
+import rw.ac.rca.smis.orm.Plane;
 
 
 import java.util.List;
 
-public interface Plane {
-    public  Plane getPlane(int planeId);
+public interface PlaneDao {
+    public Plane getPlane(int planeId);
 
     public List<Plane> getPlanes();
     public Plane deletePlane(int id);

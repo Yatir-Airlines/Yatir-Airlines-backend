@@ -1,5 +1,6 @@
-package rw.ac.rca.smis.dao;
+package rw.ac.rca.smis.daoImplementers;
 
+import rw.ac.rca.smis.dao.AirlineDao;
 import rw.ac.rca.smis.orm.Airline;
 
 import java.util.Set;
