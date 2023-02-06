@@ -5,10 +5,11 @@ package rw.ac.rca.smis.daoImplementers;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import rw.ac.rca.smis.dao.Booking;
+import rw.ac.rca.smis.dao.BookingDao;
+import rw.ac.rca.smis.orm.Booking;
 
 
-public class BookingImpl implements Booking
+public class BookingImpl implements BookingDao
 {
     SessionFactory sessionFactory;
 public BookingImpl(SessionFactory session){
@@ -21,7 +22,7 @@ public BookingImpl(SessionFactory session){
         session.save(booking);
         transaction.commit();
         session.close();
-        return booking;
+        return null;
     }
 
     @Override
@@ -36,10 +37,10 @@ public BookingImpl(SessionFactory session){
     }
 
     @Override
-    public Booking upDateBooking(Booking booking,int bookingId) {
+    public Booking upDateBooking(BookingDao booking, int bookingId) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Booking bookings = (Booking) session.get(Booking.class,bookingId);
+        BookingDao bookings = (BookingDao) session.get(BookingDao.class,bookingId);
         session.update(bookings);
         transaction.commit();
         session.close();

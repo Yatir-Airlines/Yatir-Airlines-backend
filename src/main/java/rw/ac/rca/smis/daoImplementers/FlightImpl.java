@@ -1,7 +1,8 @@
 package rw.ac.rca.smis.daoImplementers;
 
 import org.hibernate.*;
-import rw.ac.rca.smis.dao.Flight;
+import rw.ac.rca.smis.dao.FlightDao;
+import rw.ac.rca.smis.orm.Flight;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,10 +10,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class FlightImpl implements Flight {
+public class FlightImpl implements FlightDao {
     private SessionFactory sessionFactory;
     private Serializable id;
-    private Flight flight1;
+    private FlightDao flight1;
 
     public FlightImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -36,14 +37,14 @@ public class FlightImpl implements Flight {
         } finally {
             session.close();
         }
-        return flight;
+        return (Flight) flight;
     }
 
     @Override
     public Set<Flight> getFlights() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        ArrayList<Flight> flights = (ArrayList<Flight>) session.createCriteria(Flight.class).list();
+        ArrayList<Flight> flights = (ArrayList<Flight>) session.createCriteria(FlightDao.class).list();
         transaction.commit();
         session.close();
         return new HashSet<>(flights);

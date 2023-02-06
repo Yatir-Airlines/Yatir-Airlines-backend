@@ -1,10 +1,11 @@
 package rw.ac.rca.smis.dao;
 
 
-import java.util.List;
-import java.util.Set;
+import rw.ac.rca.smis.orm.Passenger;
 
-public interface Passenger {
+import java.util.List;
+
+public interface PassengerDao {
     public Passenger getPassenger(int passengerId);
     public List<Passenger> getPassengers();
     public Passenger updatePassenger(Passenger passenger);
