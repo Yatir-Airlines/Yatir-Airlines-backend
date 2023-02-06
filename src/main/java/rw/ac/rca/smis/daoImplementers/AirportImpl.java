@@ -1,8 +1,11 @@
-package rw.ac.rca.smis.dao;
+package rw.ac.rca.smis.daoImplementers;
+
+import rw.ac.rca.smis.dao.AirportDao;
+import rw.ac.rca.smis.orm.Airport;
 
 import java.util.Set;
 
-public class AirportImpl implements  Airport {
+public class AirportImpl implements AirportDao {
     @Override
     public Airport getAirport(int id) {
         return null;

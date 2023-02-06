@@ -1,15 +1,13 @@
 package rw.ac.rca.smis.dao;
 
-import org.hibernate.Session;
+import rw.ac.rca.smis.orm.Booking;
 
-public interface Booking {
+public interface BookingDao {
     Booking addBooking(Booking booking);
-
-    Booking removeBooking(Boolean option);
 
     Booking removeBooking(int bookingId);
 
-    Booking upDateBooking(Booking booking);
+    Booking upDateBooking(BookingDao booking, int bookingId);
     Booking GetBooking(int bookingId );
 }
 

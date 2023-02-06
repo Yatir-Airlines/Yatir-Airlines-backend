@@ -1,14 +1,16 @@
-package rw.ac.rca.smis.dao;
+package rw.ac.rca.smis.daoImplementers;
 
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import rw.ac.rca.smis.dao.PlaneDao;
+import rw.ac.rca.smis.orm.Plane;
 
 import java.util.List;
 
-public class PlaneImpl implements Plane{
+public class PlaneImpl implements PlaneDao {
     private final SessionFactory sessionFactory;
     public PlaneImpl(SessionFactory session){
 this.sessionFactory = session;
@@ -35,7 +37,7 @@ this.sessionFactory = session;
     @Override
     public List<Plane> getPlanes() {
         Session session = sessionFactory.openSession();
-        Criteria criteria = session.createCriteria(Plane.class);
+        Criteria criteria = session.createCriteria(PlaneDao.class);
         return criteria.list();
 
     }
@@ -54,13 +56,14 @@ return plane;
 
     @Override
     public Plane updatePlane(Plane plane) {
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.update(plane);
         transaction.commit();
         session.close();
-        return plane;
 
+        return null;
     }
+
+
 }
