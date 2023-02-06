@@ -4,11 +4,15 @@ import org.hibernate.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 
 public class FlightImpl implements Flight {
     private SessionFactory sessionFactory;
+    private Serializable id;
+    private Flight flight1;
+
     public FlightImpl(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
     }
@@ -28,7 +32,7 @@ public class FlightImpl implements Flight {
             }
             e.printStackTrace();
 
-        }
+        }  
         finally {
             session.close();
         }
@@ -38,82 +42,45 @@ public class FlightImpl implements Flight {
     @Override
     public Set<Flight>  getFlights() {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction() ;
-        Set<Flight> flights= null;
-        try{
-            flights= (Set<Flight>) session.createCriteria(Flight.class).list();
-        }
-        catch (HibernateException e){
-            e.printStackTrace();
-        }
-        finally{
-            session.close();
-        }
-        return flights;
+        Transaction transaction = session.beginTransaction();
+        ArrayList<Flight> flights = (ArrayList<Flight>) session.createCriteria(Flight.class).list();
+        transaction.commit();
+        session.close();
+        return new HashSet<>(flights);
+
+
 
     }
-
 
     @Override
     public Flight getFlight(Flight flight, Serializable id) {
-        Session session= sessionFactory.openSession();
-        Flight flight1= null;
-        try {
-            flight1= (Flight)session.get(Flight.class, id);
-        }
-        catch (HibernateException e){
-            e.printStackTrace();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Flight f = (Flight) session.get(Flight.class, id);
+        transaction.commit();
+        session.close();
+        return f;
+    }
 
-        }
-        finally {
-            session.close();
-        }
-        return flight1;
-    }
-    @Override
-    public Flight updateFlight(Flight flight) {
-        Session session= sessionFactory.openSession();
-        Transaction transaction= null;
-        try{
-            transaction= session.beginTransaction();
-            session.update(flight);
-            transaction.commit();
-        }
-        catch(HibernateException e){
-            if(transaction!=null){
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-        finally {
-            session.close();
-        }
-        return flight;
-    }
+
     @Override
     public Flight deleteFlight(Flight flight) {
-        Session session= sessionFactory.openSession();
-        Transaction transaction= null;
-        try{
-            transaction= session.beginTransaction();
-            session.delete(flight);
-            transaction.commit();
-        }
-        catch (HibernateException e){
-            if(transaction != null){
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-        finally {
-            session.close();
-        }
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(flight);
+        transaction.commit();
+        session.close();
         return flight;
     }
 
-
+    @Override
+    public Flight updateFlight(Flight flight) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(flight);
+        transaction.commit();
+        session.close();
+        return flight;
 
 }
-
-
 

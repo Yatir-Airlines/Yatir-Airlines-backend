@@ -1,5 +1,7 @@
 package rw.ac.rca.smis.orm;
 
+
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -27,6 +29,7 @@ public class   Booking {
     }
 
     public void setFlight(Flight flight) {
+
         this.flight = flight;
     }
 
@@ -43,6 +46,7 @@ public class   Booking {
     }
 
     public void setBookingDate(Date bookingDate) {
+
         BookingDate = bookingDate;
     }
 }

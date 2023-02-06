@@ -6,8 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="school_management_hibernate" />
-        <module name="smis" />
+        <module name="Yatir-" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
