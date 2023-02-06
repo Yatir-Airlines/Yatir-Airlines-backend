@@ -1,24 +1,22 @@
 package rw.ac.rca.smis.dao;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
-import java.util.List;
+//import java.util.List;
 import java.util.Set;
 
-public class PassengerImpl implements Passenger{
+public class PassengerImpl implements Passenger {
     private final SessionFactory sessionFactory;
-    public PassengerImpl(SessionFactory session){
+
+    public PassengerImpl(SessionFactory session) {
         this.sessionFactory = session;
     }
 
     @Override
     public Passenger getPassenger(int passengerId) {
         Session session = sessionFactory.openSession();
-        Transaction transaction  = session.beginTransaction();
-        Passenger passenger = (Passenger) session.get(Passenger.class,passengerId);
+        Transaction transaction = session.beginTransaction();
+        Passenger passenger = (Passenger) session.get(Passenger.class, passengerId);
         transaction.commit();
         session.close();
         return passenger;
@@ -26,10 +24,22 @@ public class PassengerImpl implements Passenger{
     }
 
     @Override
-    public List<Passenger> getPassengers() {
-        Session session = sessionFactory.openSession();
-        Criteria criteria = session.createCriteria(Passenger.class);
-        return criteria.list();
+    public Set<Passenger> getPassengers() {
+        Set<Passenger> passenger = null;
+
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            passenger = (Set<Passenger>) session.createCriteria(Passenger.class).list();
+            transaction.commit();
+            session.close();
+
+
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+
+            return passenger;
     }
 
     @Override
@@ -48,7 +58,7 @@ public class PassengerImpl implements Passenger{
     public Passenger deletePassenger(int passengerId) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Passenger passenger =(Passenger) session.get(Passenger.class,passengerId);
+        Passenger passenger = (Passenger) session.get(Passenger.class, passengerId);
         session.delete(passenger);
         transaction.commit();
         session.close();

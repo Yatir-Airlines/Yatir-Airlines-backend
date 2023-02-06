@@ -5,7 +5,7 @@ import java.util.Set;
 
 public interface Passenger {
     public Passenger getPassenger(int passengerId);
-    public List<Passenger> getPassengers();
+    public Set<Passenger> getPassengers();
     public Passenger updatePassenger(Passenger passenger);
     public Passenger deletePassenger(int passengerId);
     public Passenger createPassenger(Passenger passenger);
